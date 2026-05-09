@@ -445,6 +445,29 @@ jobs:
             reports/
             logs/
           retention-days: 30
+
+      - name: 导出日报快照给 Cloudflare Worker
+        if: success()
+        env:
+          REPORT_SYNC_URL: ${{ vars.REPORT_SYNC_URL || secrets.REPORT_SYNC_URL }}
+          REPORT_SYNC_TOKEN: ${{ secrets.REPORT_SYNC_TOKEN }}
+        run: |
+          python scripts/export_latest_report_bundle.py \
+            --out-json reports/latest_report_bundle.json \
+            --out-md reports/latest_report_bundle.md
+
+          if [ -n "$REPORT_SYNC_URL" ] && [ -n "$REPORT_SYNC_TOKEN" ]; then
+            echo "☁️ 同步最新日报到 Cloudflare Worker"
+            curl --fail --show-error --silent \
+              -X POST "$REPORT_SYNC_URL" \
+              -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $REPORT_SYNC_TOKEN" \
+              --data-binary @reports/latest_report_bundle.json
+            echo ""
+            echo "✅ Cloudflare 同步完成"
+          else
+            echo "ℹ️ 未配置 REPORT_SYNC_URL / REPORT_SYNC_TOKEN，跳过 Cloudflare 同步"
+          fi
       
       - name: 显示运行结果
         if: always()
