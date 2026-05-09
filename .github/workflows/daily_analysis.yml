@@ -23,6 +23,9 @@ on:
         default: false
         type: boolean
 
+permissions:
+  contents: write
+
 # 骞跺彂鎺у埗锛氬悓涓€鏃堕棿鍙繍琛屼竴涓垎鏋愪换鍔?
 concurrency:
   group: stock-analysis
