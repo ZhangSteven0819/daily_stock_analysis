@@ -326,7 +326,7 @@ jobs:
           # ==========================================
           # 鑷€夎偂閰嶇疆
           # ==========================================
-          STOCK_LIST: ${{ vars.STOCK_LIST || secrets.STOCK_LIST || '600519' }}
+          STOCK_LIST: '600021,300364,002467,002131,301396,301248,000078'
           MARKET_REVIEW_REGION: ${{ vars.MARKET_REVIEW_REGION || secrets.MARKET_REVIEW_REGION || 'cn' }}
           
           # ==========================================
