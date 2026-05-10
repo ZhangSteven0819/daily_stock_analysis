@@ -334,10 +334,17 @@ jobs:
           # ==========================================
           REPORT_TYPE: ${{ vars.REPORT_TYPE || secrets.REPORT_TYPE || 'simple' }}
           REPORT_LANGUAGE: ${{ vars.REPORT_LANGUAGE || secrets.REPORT_LANGUAGE || '' }}
+          REPORT_SUMMARY_ONLY: ${{ vars.REPORT_SUMMARY_ONLY || secrets.REPORT_SUMMARY_ONLY || 'false' }}
+          REPORT_TEMPLATES_DIR: ${{ vars.REPORT_TEMPLATES_DIR || secrets.REPORT_TEMPLATES_DIR || 'templates' }}
+          REPORT_RENDERER_ENABLED: ${{ vars.REPORT_RENDERER_ENABLED || secrets.REPORT_RENDERER_ENABLED || 'false' }}
           SINGLE_STOCK_NOTIFY: ${{ vars.SINGLE_STOCK_NOTIFY || secrets.SINGLE_STOCK_NOTIFY || 'false' }}
           MARKET_REVIEW_ENABLED: ${{ vars.MARKET_REVIEW_ENABLED || secrets.MARKET_REVIEW_ENABLED || 'true' }}
           ANALYSIS_DELAY: ${{ vars.ANALYSIS_DELAY || secrets.ANALYSIS_DELAY || '0' }}
           TRADING_DAY_CHECK_ENABLED: ${{ vars.TRADING_DAY_CHECK_ENABLED || secrets.TRADING_DAY_CHECK_ENABLED || 'true' }}
+          AGENT_EVENT_MONITOR_ENABLED: ${{ vars.AGENT_EVENT_MONITOR_ENABLED || secrets.AGENT_EVENT_MONITOR_ENABLED || 'false' }}
+          AGENT_EVENT_MONITOR_INTERVAL_MINUTES: ${{ vars.AGENT_EVENT_MONITOR_INTERVAL_MINUTES || secrets.AGENT_EVENT_MONITOR_INTERVAL_MINUTES || '5' }}
+          AGENT_EVENT_ALERT_RULES_JSON: ${{ vars.AGENT_EVENT_ALERT_RULES_JSON || secrets.AGENT_EVENT_ALERT_RULES_JSON || '' }}
+          MARKDOWN_TO_IMAGE_CHANNELS: ${{ vars.MARKDOWN_TO_IMAGE_CHANNELS || secrets.MARKDOWN_TO_IMAGE_CHANNELS || '' }}
           
           # ==========================================
           # 绯荤粺閰嶇疆
